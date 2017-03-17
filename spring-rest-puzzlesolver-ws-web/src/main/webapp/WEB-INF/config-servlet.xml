@@ -1,0 +1,45 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans  
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd
+  		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security.xsd 
+  		http://www.springframework.org/schema/util
+		http://www.springframework.org/schema/util/spring-util.xsd 
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<context:component-scan base-package="com.puzzle.solver.controller" /> 
+	
+	<!-- 	 Custom object mapper to return fields with null values -->
+	<mvc:annotation-driven validator="validator">
+    	<mvc:message-converters> 	 
+			<!--json converter -->
+  			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+	    </mvc:message-converters>	     
+	</mvc:annotation-driven>	
+	
+	<bean name="validator" 
+          class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"> 
+         <property name="providerClass" 
+            value="org.hibernate.validator.HibernateValidator" />
+    </bean>
+    	
+ 	<util:list id="supportedJsonMediaTypes">
+        <value>application/json</value>
+	</util:list> 
+</beans>
+
+
+

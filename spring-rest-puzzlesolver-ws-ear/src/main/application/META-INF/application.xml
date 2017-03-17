@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns:application="http://xmlns.jcp.org/xml/ns/javaee">
+	<display-name>spring-rest-puzzlesolver-ws-ear-1.0-SNAPSHOT.ear</display-name>
+	<module>
+		<web>
+			<web-uri>spring-rest-puzzlesolver-ws-web-1.0-SNAPSHOT.war</web-uri>
+			<context-root>/puzzle</context-root>
+		</web>
+	</module>	
+</application>
